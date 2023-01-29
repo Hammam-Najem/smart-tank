@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            body {font-family: Arial, Helvetica, sans-serif;}
+            form {border: 3px solid #f1f1f1;}
+            
+            input[type=text], input[type=password] {
+              width: 100%;
+              padding: 12px 20px;
+              margin: 8px 0;
+              display: inline-block;
+              border: 1px solid #ccc;
+              box-sizing: border-box;
+            }
+            
+            table, th, td {
+                border:1px solid black;
+            }
+            
+            button {
+              background-color: #04AA6D;
+              color: white;
+              padding: 14px 20px;
+              margin: 8px 0;
+              border: none;
+              cursor: pointer;
+              width: 100%;
+            }
+            
+            button:hover {
+              opacity: 0.8;
+            }
+            
+            .cancelbtn {
+              width: auto;
+              padding: 10px 18px;
+              background-color: #f44336;
+            }
+            
+            .imgcontainer {
+              text-align: center;
+              margin: 24px 0 12px 0;
+            }
+            
+            img.avatar {
+              width: 20%;
+              height: 20%;
+              border-radius: 50%;
+            }
+            
+            .container {
+              padding: 16px;
+            }
+            
+            .bordered_container {
+              padding: 16px;
+              border: 1px solid #000000;
+              border-radius: 10px;
+              margin-top: 15px;
+              margin-bottom: 15px;
+            }
+            
+            span.psw {
+              float: right;
+              padding-top: 16px;
+            }
+            
+            .loader {
+                border: 16px solid #f3f3f3; /* Light grey */
+                border-top: 16px solid #04AA6D; 
+                border-radius: 50%;
+                width: 120px;
+                height: 120px;
+                animation: spin 2s linear infinite;
+                margin: auto;
+            }
+            
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Upload New OTA -->
+        <div class="container">
+            <h2>Upload New OTA</h2>
+            <h4>You can upload new OTA.bin from your labtop and provide the OTA date</h4>
+            <form action="/smart_tank/ota_file_upload.php" method="post" onsubmit="document.getElementById('uploadingDiv').style.display = 'block';" enctype="multipart/form-data">
+                <label for="otaDayTime">OTA date and time: </label>
+                <input type="datetime-local" id="otaDayTime" name="otaDayTime" required >
+                <h4></h4>
+                <label for="otaFile">Upload OTA.bin: </label>
+                <input type="file" id="otaFile" name="otaFile" accept=".bin" required ><br>
+                <input type="hidden" id="userNameInput" name="userName">
+                <button id="submit" type="submit" >Upload</button>
+            </form>
+            <br><br>
+            <div id="uploadingDiv" style="text-align: center; display: none;">
+                <div class="loader"></div>
+                <lable style="color:#04AA6D;"><h3>Please wait while uploading...</h3></lable>
+            </div>
+        </div>
+        
+        <!-- Show Existed OTAs -->
+        <div class="bordered_container">
+            <h2>Exsited OTAs, active OTA is the first one</h2>
+            
+            <!-- Show existed OTAs-->
+            <div id="existedOtasDiv" class="container">
+                <table id="existedOtasTable" style="width:100%">
+                    <tr>
+                        <th>Name</th>
+                        <th>OTA Format</th>
+                        <th>Size</th>
+                        <th>Created By</th>
+                        <th>Created At</th>
+                        <th>Delete</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <script>
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            document.getElementById('userNameInput').value = urlParams.get('name');
+
+            async function getAllOtas() {
+                const response = await fetch('/smart_tank/get_all_otas.php');
+                var result = await response.json();
+                for (var i=0; i < result['message']['size']; i++) {
+                    addRowToTable(
+                        result['message']['otas'][i]['id'], 
+                        result['message']['otas'][i]['name'],
+                        result['message']['otas'][i]['ota_format'],
+                        result['message']['otas'][i]['size'],
+                        result['message']['otas'][i]['created_by'],
+                        result['message']['otas'][i]['created_at'],
+                        result['message']['otas'][i]['ota_date'],
+                    );
+                }
+            }
+            
+            function addRowToTable(id, name, otaFormat, size, createdBy, createdAt, otaDate) {
+                var table = document.getElementById("existedOtasTable");
+                var row = table.insertRow();
+                var nameCell = row.insertCell(0); // name
+                var otaDateCell = row.insertCell(1); // otaDate
+                var sizeCell = row.insertCell(2); // size
+                var createdByCell = row.insertCell(3); // createdBy
+                var createdAtCell = row.insertCell(4); // createdAt
+                var deleteCell = row.insertCell(5); // delete
+                nameCell.innerHTML = name;
+                otaDateCell.innerHTML = otaDate;
+                sizeCell.innerHTML = size/1024 + " KB";
+                createdByCell.innerHTML = createdBy;
+                createdAtCell.innerHTML = createdAt;
+                row.setAttribute('id', 'row:' + otaDate);
+                // create delete button
+                var deleteButton = document.createElement("button");
+                var deleteButtonText = document.createTextNode("Delete");
+                deleteButton.appendChild(deleteButtonText);
+                deleteButton.setAttribute('id', otaDate);
+                deleteButton.style.backgroundColor = "red";
+                deleteButton.setAttribute('onclick', 'deleteOta(this.id)');  
+                deleteCell.appendChild(deleteButton);
+            }
+            
+            async function deleteOta(createdAt) {
+                if (!confirm('Delete OTA created at ' + createdAt + ' ?')) return;
+                const response = await fetch('/smart_tank/delete_ota.php?created_at='+ createdAt);
+                var result = await response.json();
+                if (result['status'] == 'success') document.getElementById('row:' + createdAt).remove();
+                else alert(JSON.stringify(result));
+            }
+            
+            getAllOtas();
+        </script>
+        
+    </body>
+</html>

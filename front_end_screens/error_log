@@ -1,0 +1,131 @@
+[07-Nov-2022 12:16:00 America/Boise] PHP Warning:  include(constants.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 3
+[07-Nov-2022 12:16:00 America/Boise] PHP Warning:  include(constants.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 3
+[07-Nov-2022 12:16:00 America/Boise] PHP Warning:  include(): Failed opening 'constants.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 3
+[07-Nov-2022 12:16:00 America/Boise] PHP Warning:  include(connect-db.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 4
+[07-Nov-2022 12:16:00 America/Boise] PHP Warning:  include(connect-db.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 4
+[07-Nov-2022 12:16:00 America/Boise] PHP Warning:  include(): Failed opening 'connect-db.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 4
+[07-Nov-2022 12:16:34 America/Boise] PHP Warning:  include(constants.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 3
+[07-Nov-2022 12:16:34 America/Boise] PHP Warning:  include(constants.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 3
+[07-Nov-2022 12:16:34 America/Boise] PHP Warning:  include(): Failed opening 'constants.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 3
+[07-Nov-2022 12:16:34 America/Boise] PHP Warning:  include(connect-db.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 4
+[07-Nov-2022 12:16:34 America/Boise] PHP Warning:  include(connect-db.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 4
+[07-Nov-2022 12:16:34 America/Boise] PHP Warning:  include(): Failed opening 'connect-db.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 4
+[07-Nov-2022 12:16:45 America/Boise] PHP Warning:  include(constants.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 3
+[07-Nov-2022 12:16:45 America/Boise] PHP Warning:  include(constants.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 3
+[07-Nov-2022 12:16:45 America/Boise] PHP Warning:  include(): Failed opening 'constants.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 3
+[07-Nov-2022 12:16:45 America/Boise] PHP Warning:  include(connect-db.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 4
+[07-Nov-2022 12:16:45 America/Boise] PHP Warning:  include(connect-db.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 4
+[07-Nov-2022 12:16:45 America/Boise] PHP Warning:  include(): Failed opening 'connect-db.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 4
+[07-Nov-2022 12:16:45 America/Boise] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php:10
+Stack trace:
+#0 {main}
+  thrown in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 10
+[07-Nov-2022 12:18:08 America/Boise] PHP Warning:  include(constants.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 3
+[07-Nov-2022 12:18:08 America/Boise] PHP Warning:  include(constants.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 3
+[07-Nov-2022 12:18:08 America/Boise] PHP Warning:  include(): Failed opening 'constants.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 3
+[07-Nov-2022 12:18:08 America/Boise] PHP Warning:  include(connect-db.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 4
+[07-Nov-2022 12:18:08 America/Boise] PHP Warning:  include(connect-db.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 4
+[07-Nov-2022 12:18:08 America/Boise] PHP Warning:  include(): Failed opening 'connect-db.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 4
+[07-Nov-2022 12:18:08 America/Boise] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php:10
+Stack trace:
+#0 {main}
+  thrown in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 10
+[07-Nov-2022 12:18:43 America/Boise] PHP Warning:  include(constants.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 3
+[07-Nov-2022 12:18:43 America/Boise] PHP Warning:  include(constants.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 3
+[07-Nov-2022 12:18:43 America/Boise] PHP Warning:  include(): Failed opening 'constants.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 3
+[07-Nov-2022 12:18:43 America/Boise] PHP Warning:  include(connect-db.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 4
+[07-Nov-2022 12:18:43 America/Boise] PHP Warning:  include(connect-db.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 4
+[07-Nov-2022 12:18:43 America/Boise] PHP Warning:  include(): Failed opening 'connect-db.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 4
+[07-Nov-2022 12:18:43 America/Boise] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php:10
+Stack trace:
+#0 {main}
+  thrown in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 10
+[07-Nov-2022 12:20:07 America/Boise] PHP Warning:  include(constants.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 3
+[07-Nov-2022 12:20:07 America/Boise] PHP Warning:  include(constants.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 3
+[07-Nov-2022 12:20:07 America/Boise] PHP Warning:  include(): Failed opening 'constants.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 3
+[07-Nov-2022 12:20:07 America/Boise] PHP Warning:  include(connect-db.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 4
+[07-Nov-2022 12:20:07 America/Boise] PHP Warning:  include(connect-db.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 4
+[07-Nov-2022 12:20:07 America/Boise] PHP Warning:  include(): Failed opening 'connect-db.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 4
+[07-Nov-2022 12:20:07 America/Boise] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php:10
+Stack trace:
+#0 {main}
+  thrown in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 10
+[07-Nov-2022 12:20:31 America/Boise] PHP Warning:  include(constants.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 3
+[07-Nov-2022 12:20:31 America/Boise] PHP Warning:  include(constants.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 3
+[07-Nov-2022 12:20:31 America/Boise] PHP Warning:  include(): Failed opening 'constants.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 3
+[07-Nov-2022 12:20:31 America/Boise] PHP Warning:  include(connect-db.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 4
+[07-Nov-2022 12:20:31 America/Boise] PHP Warning:  include(connect-db.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 4
+[07-Nov-2022 12:20:31 America/Boise] PHP Warning:  include(): Failed opening 'connect-db.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 4
+[07-Nov-2022 12:20:31 America/Boise] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php:11
+Stack trace:
+#0 {main}
+  thrown in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 11
+[07-Nov-2022 12:20:40 America/Boise] PHP Warning:  include(constants.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 3
+[07-Nov-2022 12:20:40 America/Boise] PHP Warning:  include(constants.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 3
+[07-Nov-2022 12:20:40 America/Boise] PHP Warning:  include(): Failed opening 'constants.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 3
+[07-Nov-2022 12:20:40 America/Boise] PHP Warning:  include(connect-db.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 4
+[07-Nov-2022 12:20:40 America/Boise] PHP Warning:  include(connect-db.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 4
+[07-Nov-2022 12:20:40 America/Boise] PHP Warning:  include(): Failed opening 'connect-db.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 4
+[07-Nov-2022 12:20:40 America/Boise] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php:11
+Stack trace:
+#0 {main}
+  thrown in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 11
+[07-Nov-2022 12:21:10 America/Boise] PHP Warning:  include(constants.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 3
+[07-Nov-2022 12:21:10 America/Boise] PHP Warning:  include(constants.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 3
+[07-Nov-2022 12:21:10 America/Boise] PHP Warning:  include(): Failed opening 'constants.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 3
+[07-Nov-2022 12:21:10 America/Boise] PHP Warning:  include(connect-db.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 4
+[07-Nov-2022 12:21:10 America/Boise] PHP Warning:  include(connect-db.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 4
+[07-Nov-2022 12:21:10 America/Boise] PHP Warning:  include(): Failed opening 'connect-db.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 4
+[07-Nov-2022 12:21:10 America/Boise] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php:11
+Stack trace:
+#0 {main}
+  thrown in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 11
+[07-Nov-2022 12:21:40 America/Boise] PHP Warning:  include(constants.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 3
+[07-Nov-2022 12:21:40 America/Boise] PHP Warning:  include(constants.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 3
+[07-Nov-2022 12:21:40 America/Boise] PHP Warning:  include(): Failed opening 'constants.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 3
+[07-Nov-2022 12:21:40 America/Boise] PHP Warning:  include(connect-db.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 4
+[07-Nov-2022 12:21:40 America/Boise] PHP Warning:  include(connect-db.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 4
+[07-Nov-2022 12:21:40 America/Boise] PHP Warning:  include(): Failed opening 'connect-db.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 4
+[07-Nov-2022 12:21:40 America/Boise] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php:11
+Stack trace:
+#0 {main}
+  thrown in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 11
+[07-Nov-2022 12:22:09 America/Boise] PHP Warning:  include(constants.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 3
+[07-Nov-2022 12:22:09 America/Boise] PHP Warning:  include(constants.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 3
+[07-Nov-2022 12:22:09 America/Boise] PHP Warning:  include(): Failed opening 'constants.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 3
+[07-Nov-2022 12:22:09 America/Boise] PHP Warning:  include(connect-db.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 4
+[07-Nov-2022 12:22:09 America/Boise] PHP Warning:  include(connect-db.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 4
+[07-Nov-2022 12:22:09 America/Boise] PHP Warning:  include(): Failed opening 'connect-db.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 4
+[07-Nov-2022 12:23:20 America/Boise] PHP Warning:  include(constants.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 3
+[07-Nov-2022 12:23:20 America/Boise] PHP Warning:  include(constants.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 3
+[07-Nov-2022 12:23:20 America/Boise] PHP Warning:  include(): Failed opening 'constants.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 3
+[07-Nov-2022 12:23:20 America/Boise] PHP Warning:  include(connect-db.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 4
+[07-Nov-2022 12:23:20 America/Boise] PHP Warning:  include(connect-db.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 4
+[07-Nov-2022 12:23:20 America/Boise] PHP Warning:  include(): Failed opening 'connect-db.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 4
+[07-Nov-2022 12:23:20 America/Boise] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php:10
+Stack trace:
+#0 {main}
+  thrown in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 10
+[07-Nov-2022 12:25:53 America/Boise] PHP Warning:  include(constants.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 3
+[07-Nov-2022 12:25:53 America/Boise] PHP Warning:  include(constants.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 3
+[07-Nov-2022 12:25:53 America/Boise] PHP Warning:  include(): Failed opening 'constants.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 3
+[07-Nov-2022 12:25:53 America/Boise] PHP Warning:  include(connect-db.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 4
+[07-Nov-2022 12:25:53 America/Boise] PHP Warning:  include(connect-db.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 4
+[07-Nov-2022 12:25:53 America/Boise] PHP Warning:  include(): Failed opening 'connect-db.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 4
+[07-Nov-2022 12:25:53 America/Boise] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php:10
+Stack trace:
+#0 {main}
+  thrown in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 10
+[07-Nov-2022 12:26:23 America/Boise] PHP Warning:  include(/smart_tank/constants.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 3
+[07-Nov-2022 12:26:23 America/Boise] PHP Warning:  include(): Failed opening '/smart_tank/constants.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 3
+[07-Nov-2022 12:26:23 America/Boise] PHP Warning:  include(/smart_tank/connect-db.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 4
+[07-Nov-2022 12:26:23 America/Boise] PHP Warning:  include(): Failed opening '/smart_tank/connect-db.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 4
+[07-Nov-2022 12:26:23 America/Boise] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php:10
+Stack trace:
+#0 {main}
+  thrown in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 10
+[09-Nov-2022 09:15:12 America/Boise] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php:14) in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 15
+[09-Nov-2022 09:18:26 America/Boise] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php:14) in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 15
+[09-Nov-2022 09:18:56 America/Boise] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php:14) in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 15
+[09-Nov-2022 09:19:06 America/Boise] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php:14) in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 15
+[09-Nov-2022 09:22:59 America/Boise] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php:14) in /home1/technri2/public_html/smart_tank/front_end_screens/approve_data.php on line 15

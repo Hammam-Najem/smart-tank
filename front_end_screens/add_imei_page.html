@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            body {font-family: Arial, Helvetica, sans-serif;}
+            form {border: 3px solid #f1f1f1;}
+            
+            input[type=text], input[type=password] {
+              width: 100%;
+              padding: 12px 20px;
+              margin: 8px 0;
+              display: inline-block;
+              border: 1px solid #ccc;
+              box-sizing: border-box;
+            }
+            
+            table, th, td {
+                border:1px solid black;
+            }
+            
+            button {
+              background-color: #04AA6D;
+              color: white;
+              padding: 14px 20px;
+              margin: 8px 0;
+              border: none;
+              cursor: pointer;
+              width: 100%;
+            }
+            
+            button:hover {
+              opacity: 0.8;
+            }
+            
+            .cancelbtn {
+              width: auto;
+              padding: 10px 18px;
+              background-color: #f44336;
+            }
+            
+            .imgcontainer {
+              text-align: center;
+              margin: 24px 0 12px 0;
+            }
+            
+            img.avatar {
+              width: 20%;
+              height: 20%;
+              border-radius: 50%;
+            }
+            
+            .container {
+              padding: 16px;
+            }
+            
+            .bordered_container {
+              padding: 16px;
+              border: 1px solid #000000;
+              border-radius: 10px;
+              margin-top: 15px;
+              margin-bottom: 15px;
+            }
+            
+            span.psw {
+              float: right;
+              padding-top: 16px;
+            }
+            
+            /* Change styles for span and cancel button on extra small screens */
+            @media screen and (max-width: 300px) {
+              span.psw {
+                 display: block;
+                 float: none;
+              }
+              .cancelbtn {
+                 width: 100%;
+              }
+            }
+        </style>
+    </head>
+    <body>
+    
+        <!-- Add new IME -->
+        <div class="bordered_container">
+            <h2>Add New IMEI</h2>
+            <label><b>Enter IMEI the way you like, we will try to fetch it :)</b></label>
+            <table style="width:100%; border:none;">
+                <tr>
+                    <th style="border:none;">IMEI</th>
+                    <th style="border:none;">
+                        <input id= "addImeiText" type="text" placeholder="P/N:S2-1065S-Z1442;SN:MP0621312D3B71B;IMEI:862749051353067;SW:1309B10SIM800L16">
+                    </th>
+                    <th style="border:none;">Note</th>
+                    <th style="border:none;">
+                        <input id= "addNoteText" type="text" placeholder="Anas Device">
+                    </th>
+                </tr>
+            </table>
+            <label><span >Fetched IMEI: </span><span id="fetchedImei" style="color:red"></span></label>
+            <button id="addImeiSubmit" type="submit">Add</button>
+        </div>
+        
+        <!-- Show and Seatch for IMEI-->
+        <div class="bordered_container">
+            <h2>Exsited IMEI's</h2>
+            <!-- Search for IMEI-->
+            <label><b>Search for IMEI, search by type a part of IMEI or part of the note</b></label>
+            <input id= "imeiSearchText" type="text" placeholder="862749051353067">
+            <button id="imeiSeachSubmit" >Search</button>
+            
+            <!-- Show existed IMEIs-->
+            <div id="existedImeisDiv" class="container">
+                <table id="existedImeisTable" style="width:100%">
+                    <tr>
+                        <th>IMEI</th>
+                        <th>Password</th>
+                        <th>Device Number</th>
+                        <th>Receiver Number</th>
+                        <th>Note</th>
+                        <th>Analysis</th>
+                        <th>Delete</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        
+        
+    
+        <script type = "text/javascript">
+
+            // Fetch IMEI from add imei text
+            document.getElementById("addImeiText").oninput = function() {
+                let lowerCaseString = document.getElementById("addImeiText").value.toLowerCase();
+                lowerCaseString = lowerCaseString.trim();
+                let afterImeiArray = lowerCaseString.split("imei:");
+                let afterImei = afterImeiArray[1] == undefined ? afterImeiArray[0] : afterImeiArray[1];
+                let imeiArray = afterImei.split(";");
+                let imei = imeiArray[0];
+                document.getElementById("fetchedImei").innerHTML = imei;
+            };
+            
+            // On add IMEI pressed
+            document.getElementById("addImeiSubmit").onclick = async function () {
+                if (document.getElementById("fetchedImei").innerHTML.length != 15) {
+                    alert(JSON.stringify("IMEI should be 15 digits!!"));
+                    return;
+                }
+                if (!(/^\d+$/.test(document.getElementById("fetchedImei").innerHTML))){
+                    alert(JSON.stringify("IMEI can be contains only numbers!!"));
+                    return;
+                }
+                const response = await fetch('/smart_tank/add_new_imei.php?imei='+ document.getElementById("fetchedImei").innerHTML + '&note=' + document.getElementById("addNoteText").value);
+                var result = await response.json();
+                if(result['status'] == 'success') {
+                    addRowToTable( 
+                        result['message']['imei'],
+                        result['message']['password'],
+                        'Not Defined Yet',
+                        'Not Defined Yet',
+                        result['message']['note']
+                    );
+                    document.getElementById("addImeiText").value = '';
+                    document.getElementById("fetchedImei").innerHTML = '';
+                    document.getElementById("addNoteText").value = '';
+                } else {
+                    alert(JSON.stringify(result));    
+                }
+            }
+            
+            // On seatch IMEI pressed
+            document.getElementById("imeiSeachSubmit").onclick = async function () {
+                if (document.getElementById("imeiSearchText").value.length != 0){
+                    const response = await fetch('/smart_tank/search_imei.php?sub_string='+ document.getElementById("imeiSearchText").value);
+                    var result = await response.json();
+                    if (result['status'] == 'success') {
+                        document.getElementById("imeiSearchText").value = '';
+                        deleteSearchTableRows();
+                        var table = document.getElementById("existedImeisTable");
+                        for (var i=0; i < result['message']['size']; i++) {
+                            addRowToTable( 
+                                result['message']['imeis'][i]['imei'],
+                                result['message']['imeis'][i]['password'],
+                                result['message']['imeis'][i]['device_number'],
+                                result['message']['imeis'][i]['receiver_number'],
+                                result['message']['imeis'][i]['note']
+                            );
+                        }
+                    }
+                } else {
+                    deleteSearchTableRows();
+                    getAllImeis();
+                }
+                
+            }
+            
+            async function getAllImeis() {
+                const response = await fetch('/smart_tank/get_all_imeis.php');
+                var result = await response.json();
+                for (var i=0; i < result['message']['size']; i++) {
+                    addRowToTable(
+                        result['message']['imeis'][i]['imei'],
+                        result['message']['imeis'][i]['password'],
+                        result['message']['imeis'][i]['device_number'],
+                        result['message']['imeis'][i]['receiver_number'],
+                        result['message']['imeis'][i]['note'],
+                    );
+                }
+            }
+            
+            async function deleteImei(imei) {
+                if (!confirm('Delete ' + imei + ' ?')) return;
+                const response = await fetch('/smart_tank/delete_imei.php?imei='+ imei);
+                var result = await response.json();
+                if (result['status'] == 'success') document.getElementById('row:' + imei).remove();
+                else alert(JSON.stringify(result));
+            }
+            
+            async function analysisImei(imei) {
+                // window.location.href = "/smart_tank/front_end_screens/imei_analysis.html?imei=" + imei;
+                window.open(
+                    "/smart_tank/front_end_screens/imei_analysis.html?imei=" + imei,
+                    '_blank' // open in a new window.
+                );
+            }
+            
+            function deleteSearchTableRows() {
+                var table = document.getElementById("existedImeisTable");
+                var rowCount = table.rows.length;
+                for (var i = rowCount - 1; i > 0; i--) {
+                    table.deleteRow(i);
+                }
+            }
+            
+            function addRowToTable(imei, password, deviceNumber, receiverNumber, note) {
+                var table = document.getElementById("existedImeisTable");
+                var row = table.insertRow();
+                var imeiCell = row.insertCell(0); // imei
+                var passwordCell = row.insertCell(1); // password
+                var deviceNumberCell = row.insertCell(2); // deviceNumber
+                var receiverNumberCell = row.insertCell(3); // receiverNumber
+                var noteCell = row.insertCell(4); // note
+                var analysisCell = row.insertCell(5); // analysis
+                var deleteCell = row.insertCell(6); // delete
+                imeiCell.innerHTML = imei;
+                passwordCell.innerHTML = password;
+                row.setAttribute('id', 'row:' + imeiCell.innerHTML);
+                noteCell.innerHTML = note;
+                deviceNumberCell.innerHTML = deviceNumber;
+                receiverNumberCell.innerHTML = receiverNumber;
+                // create analysis button 
+                var analysisButton = document.createElement("button");
+                var analysisButtonText = document.createTextNode("Analysis");
+                analysisButton.appendChild(analysisButtonText);
+                analysisButton.setAttribute('id', imeiCell.innerHTML);
+                analysisButton.setAttribute('onclick', 'analysisImei(this.id)');  
+                analysisCell.appendChild(analysisButton);
+                // create delete button
+                var deleteButton = document.createElement("button");
+                var deleteButtonText = document.createTextNode("Delete");
+                deleteButton.appendChild(deleteButtonText);
+                deleteButton.setAttribute('id', imeiCell.innerHTML);
+                deleteButton.style.backgroundColor = "red";
+                deleteButton.setAttribute('onclick', 'deleteImei(this.id)');  
+                deleteCell.appendChild(deleteButton);
+            }
+            getAllImeis();
+            
+            
+        </script> 
+    
+    </body>
+</html>

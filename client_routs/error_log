@@ -1,0 +1,38 @@
+[03-Jan-2023 22:56:52 Asia/Hebron] PHP Warning:  include(connect-db.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/client_routs/change_settings.php on line 3
+[03-Jan-2023 22:56:52 Asia/Hebron] PHP Warning:  include(connect-db.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/client_routs/change_settings.php on line 3
+[03-Jan-2023 22:56:52 Asia/Hebron] PHP Warning:  include(): Failed opening 'connect-db.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home1/technri2/public_html/smart_tank/client_routs/change_settings.php on line 3
+[03-Jan-2023 22:57:27 Asia/Hebron] PHP Warning:  include(connect-db.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/client_routs/change_settings.php on line 3
+[03-Jan-2023 22:57:27 Asia/Hebron] PHP Warning:  include(connect-db.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/client_routs/change_settings.php on line 3
+[03-Jan-2023 22:57:27 Asia/Hebron] PHP Warning:  include(): Failed opening 'connect-db.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home1/technri2/public_html/smart_tank/client_routs/change_settings.php on line 3
+[03-Jan-2023 22:57:27 Asia/Hebron] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home1/technri2/public_html/smart_tank/client_routs/change_settings.php:11
+Stack trace:
+#0 {main}
+  thrown in /home1/technri2/public_html/smart_tank/client_routs/change_settings.php on line 11
+[03-Jan-2023 22:59:00 Asia/Hebron] PHP Warning:  include(connect-db.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/client_routs/change_settings.php on line 3
+[03-Jan-2023 22:59:00 Asia/Hebron] PHP Warning:  include(connect-db.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/client_routs/change_settings.php on line 3
+[03-Jan-2023 22:59:00 Asia/Hebron] PHP Warning:  include(): Failed opening 'connect-db.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home1/technri2/public_html/smart_tank/client_routs/change_settings.php on line 3
+[03-Jan-2023 22:59:00 Asia/Hebron] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home1/technri2/public_html/smart_tank/client_routs/change_settings.php:11
+Stack trace:
+#0 {main}
+  thrown in /home1/technri2/public_html/smart_tank/client_routs/change_settings.php on line 11
+[03-Jan-2023 23:04:23 Asia/Hebron] PHP Warning:  include(connect-db.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/client_routs/change_settings.php on line 3
+[03-Jan-2023 23:04:23 Asia/Hebron] PHP Warning:  include(connect-db.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/client_routs/change_settings.php on line 3
+[03-Jan-2023 23:04:23 Asia/Hebron] PHP Warning:  include(): Failed opening 'connect-db.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home1/technri2/public_html/smart_tank/client_routs/change_settings.php on line 3
+[03-Jan-2023 23:04:23 Asia/Hebron] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home1/technri2/public_html/smart_tank/client_routs/change_settings.php:11
+Stack trace:
+#0 {main}
+  thrown in /home1/technri2/public_html/smart_tank/client_routs/change_settings.php on line 11
+[03-Jan-2023 23:05:51 Asia/Hebron] PHP Warning:  include(connect-db.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/client_routs/change_settings.php on line 3
+[03-Jan-2023 23:05:51 Asia/Hebron] PHP Warning:  include(connect-db.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/client_routs/change_settings.php on line 3
+[03-Jan-2023 23:05:51 Asia/Hebron] PHP Warning:  include(): Failed opening 'connect-db.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home1/technri2/public_html/smart_tank/client_routs/change_settings.php on line 3
+[03-Jan-2023 23:05:51 Asia/Hebron] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home1/technri2/public_html/smart_tank/client_routs/change_settings.php:12
+Stack trace:
+#0 {main}
+  thrown in /home1/technri2/public_html/smart_tank/client_routs/change_settings.php on line 12
+[03-Jan-2023 23:06:18 Asia/Hebron] PHP Warning:  include(connect-db.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/client_routs/change_settings.php on line 3
+[03-Jan-2023 23:06:18 Asia/Hebron] PHP Warning:  include(connect-db.php): failed to open stream: No such file or directory in /home1/technri2/public_html/smart_tank/client_routs/change_settings.php on line 3
+[03-Jan-2023 23:06:18 Asia/Hebron] PHP Warning:  include(): Failed opening 'connect-db.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home1/technri2/public_html/smart_tank/client_routs/change_settings.php on line 3
+[03-Jan-2023 23:06:18 Asia/Hebron] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home1/technri2/public_html/smart_tank/client_routs/change_settings.php:13
+Stack trace:
+#0 {main}
+  thrown in /home1/technri2/public_html/smart_tank/client_routs/change_settings.php on line 13

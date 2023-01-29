@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+        <style>
+            body {font-family: Arial, Helvetica, sans-serif;}
+            form {border: 3px solid #f1f1f1;}
+            
+            input[type=text], input[type=password] {
+              width: 100%;
+              padding: 12px 20px;
+              margin: 8px 0;
+              display: inline-block;
+              border: 1px solid #ccc;
+              box-sizing: border-box;
+            }
+            
+            table, th, td {
+                border:1px solid black;
+            }
+            
+            button {
+              background-color: #04AA6D;
+              color: white;
+              padding: 14px 20px;
+              margin: 8px 0;
+              border: none;
+              cursor: pointer;
+              width: 100%;
+            }
+            
+            button:hover {
+              opacity: 0.8;
+            }
+            
+            .cancelbtn {
+              width: auto;
+              padding: 10px 18px;
+              background-color: #f44336;
+            }
+            
+            .imgcontainer {
+              text-align: center;
+              margin: 24px 0 12px 0;
+            }
+            
+            img.avatar {
+              width: 20%;
+              height: 20%;
+              border-radius: 50%;
+            }
+            
+            .container {
+              padding: 16px;
+            }
+            
+            .bordered_container {
+              padding: 16px;
+              border: 1px solid #000000;
+              border-radius: 10px;
+              margin-top: 15px;
+              margin-bottom: 15px;
+            }
+            
+            span.psw {
+              float: right;
+              padding-top: 16px;
+            }
+            
+            /* Change styles for span and cancel button on extra small screens */
+            @media screen and (max-width: 300px) {
+              span.psw {
+                 display: block;
+                 float: none;
+              }
+              .cancelbtn {
+                 width: 100%;
+              }
+            }
+        </style>
+    </head>
+    <body>
+        
+        <!-- IMIE number -->
+        <div class="container">
+            <h2 id="fetchedImei">Analysis Screen for IMEI <span id="fetchedImeiSpan" style="color:red"></span></h2>
+        </div>
+        
+        <!-- IMIE data -->
+        <div class="bordered_container">
+            <h2>IMEI Information</h2>
+            <lable>
+                <span >Tank Reader Requests: </span><span id="tankReaderRequestsSpan" style="color:red"></span>
+                <span >, Tank State Requests: </span><span id="tankStateRequestsSpan" style="color:red"></span>
+            </lable>
+            <table style="width:100%; border:none;" >
+                <tr>
+                    <th style="border:none;">Note</th>
+                    <th style="border:none;"><input id= "editNoteText" type="text"></th>
+                    <th style="border:none;"><button id="editNoteSubmit" type="submit">Edit</button></th>
+                </tr>
+            </table>
+        </div>
+        
+        <!-- tank configuration -->
+        <div class="bordered_container" >
+            <!-- Last tank configuration -->
+            <h2 >Last tank configuration </h2>
+            <label>
+                <span >Device Number: </span><span id="deviceNumberSpan" style="color:red"></span>
+                <span >, Receiver Number: </span><span id="receiverNumberSpan" style="color:red"></span>
+                <span >, Tank Height: </span><span id="tankHeightSpan" style="color:red"></span>
+                <span >, Dead Height: </span><span id="deadHeightSpan" style="color:red"></span>
+                <span >, ICCID: </span><span id="iccidSpan" style="color:red"></span>
+                <span >, Created At: </span><span id="createdAtSpan" style="color:red"></span>
+                <span >, Last OTA Date: </span><span id="lastOtaSpan" style="color:red"></span>
+            </label>
+            
+            <!-- Show tank configurations table -->
+            <h2 >Tank Configurations Table </h2>
+            <div id="tankConfigurationsTableDiv" class="container" style="width:90%;max-height:200px;overflow:auto;">
+                <table id="tankConfigurationsTable"  style="width:100%" >
+                    <tr>
+                        <th>Device Number</th>
+                        <th>Receiver Number</th>
+                        <th>Tank Height</th>
+                        <th>Dead Height</th>
+                        <th>ICCID</th>
+                        <th>Created At</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Show tank status table -->
+        <div class="bordered_container">
+            <h2 >Tank Readings Table </h2>
+            <div id="tankStatusTableDiv" class="container" style="width:90%;max-height:200px;overflow:auto;">
+                <div id="tankStateListLengthDiv"> 
+                    <label id="tankStateListLengthLable">Rows Number:</label>
+                    <select id="tankStateListLengthSelect">
+                        <option value="10">10 </option>
+                        <option value="70">70 </option>
+                        <option value="150">150 </option>
+                        <option value="300">300 </option>
+                        <option value="2000">2000 </option>
+                        <option value="-1">--As much as possible--</option>
+                    </select>
+                </div>
+                <br>
+                <table id="tankStatesTable"  style="width:100%" >
+                    <tr>
+                        <th>Number</th>
+                        <th>Water Height Level</th>
+                        <th>Raw Height</th>
+                        <th>Connect Time</th>
+                        <th>Signal Strength</th>
+                        <th>Failures Number</th>
+                        <th>Battery Volt</th>
+                        <th>Sleep Time</th>
+                        <th>OTA Date</th>
+                        <th>Created At</th>
+                        <th>Comment</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Water height analysis chart -->
+        <div class="bordered_container">
+            <b ><span > Tank Height: </span><span id="tankHeightSpan1" style="color:red"></span> </b>
+            <div id="waterHeightListLengthDiv"> 
+                <label id="waterHeightListLengthLable">Points Number:</label>
+                <select id="waterHeightListLengthSelect">
+                    <option value="10">10 </option>
+                    <option value="70">70 </option>
+                    <option value="150">150 </option>
+                    <option value="300">300 </option>
+                    <option value="2000">2000 </option>
+                    <option value="-1">--As much as possible--</option>
+                </select>
+            </div>
+            <div id="waterHeightChartDiv" style="height: 300px; width: 100%;"></div>
+        </div>
+        
+        <!-- Battery Volt analysis chart -->
+        <div class="bordered_container">
+            <div id="batteryVoltListLengthDiv"> 
+                <label id="batteryVoltListLengthLable">Points Number:</label>
+                <select id="batteryVoltListLengthSelect">
+                    <option value="10">10 </option>
+                    <option value="70">70 </option>
+                    <option value="150">150 </option>
+                    <option value="300">300 </option>
+                    <option value="2000">2000 </option>
+                    <option value="-1">--As much as possible--</option>
+                </select>
+            </div>
+            <div id="batteryVoltChartDiv" style="height: 300px; width: 100%;"></div>
+        </div>
+        
+        <!-- Signal Strength analysis chart -->
+        <div class="bordered_container">
+            <div id="signalStrengthListLengthDiv"> 
+                <label id="signalStrengthListLengthLable">Points Number:</label>
+                <select id="signalStrengthListLengthSelect">
+                    <option value="10">10 </option>
+                    <option value="70">70 </option>
+                    <option value="150">150 </option>
+                    <option value="300">300 </option>
+                    <option value="2000">2000 </option>
+                    <option value="-1">--As much as possible--</option>
+                </select>
+            </div>
+            <div id="signalStrengthChartDiv" style="height: 300px; width: 100%;"></div>
+        </div>
+        
+        <!-- Connect Time analysis chart -->
+        <div class="bordered_container">
+            <div id="connectTimeListLengthDiv"> 
+                <label id="connectTimeListLengthLable">Points Number:</label>
+                <select id="connectTimeListLengthSelect">
+                    <option value="10">10 </option>
+                    <option value="70">70 </option>
+                    <option value="150">150 </option>
+                    <option value="300">300 </option>
+                    <option value="2000">2000 </option>
+                    <option value="-1">--As much as possible--</option>
+                </select>
+            </div>
+            <div id="connectTimeChartDiv" style="height: 300px; width: 100%;"></div>
+        </div>
+        
+        <!-- Connect Failures analysis chart -->
+        <div class="bordered_container">
+            <div id="connectFailuresListLengthDiv"> 
+                <label id="connectFailuresListLengthLable">Points Number:</label>
+                <select id="connectFailuresListLengthSelect">
+                    <option value="10">10 </option>
+                    <option value="70">70 </option>
+                    <option value="150">150 </option>
+                    <option value="300">300 </option>
+                    <option value="2000">2000 </option>
+                    <option value="-1">--As much as possible--</option>
+                </select>
+            </div>
+            <div id="connectFailuresChartDiv" style="height: 300px; width: 100%;"></div>
+        </div>
+        
+        <!-- Sleep Time analysis chart -->
+        <div class="bordered_container">
+            <div id="sleepTimeListLengthDiv"> 
+                <label id="sleepTimeListLengthLable">Points Number:</label>
+                <select id="sleepTimeListLengthSelect">
+                    <option value="10">10 </option>
+                    <option value="70">70 </option>
+                    <option value="150">150 </option>
+                    <option value="300">300 </option>
+                    <option value="2000">2000 </option>
+                    <option value="-1">--As much as possible--</option>
+                </select>
+            </div>
+            <div id="sleepTimeChartDiv" style="height: 300px; width: 100%;"></div>
+        </div>
+        
+        <!-- Raw Height analysis chart -->
+        <div class="bordered_container">
+            <div id="rawHeightListLengthDiv"> 
+                <label id="rawHeightListLengthLable">Points Number:</label>
+                <select id="rawHeightListLengthSelect">
+                    <option value="10">10 </option>
+                    <option value="70">70 </option>
+                    <option value="150">150 </option>
+                    <option value="300">300 </option>
+                    <option value="2000">2000 </option>
+                    <option value="-1">--As much as possible--</option>
+                </select>
+            </div>
+            <div id="rawHeightChartDiv" style="height: 300px; width: 100%;"></div>
+        </div>
+        
+        <!--Global Script-->
+        <script type = "text/javascript">
+            let imei_for_analysis = getParameters();
+            
+            document.getElementById('fetchedImeiSpan').innerHTML = imei_for_analysis;
+            
+            async function showImeiData() {
+                const response = await fetch('/smart_tank/search_imei.php?sub_string='+ imei_for_analysis );
+                var result = await response.json();
+                if (result['status'] == 'success') {
+                    for (var i=0; i < result['message']['size']; i++) {
+                        document.getElementById('tankReaderRequestsSpan').innerHTML = result['message']['imeis'][i]['tank_reader_requests_number'];
+                        document.getElementById('tankStateRequestsSpan').innerHTML = result['message']['imeis'][i]['tank_state_requests_number'];
+                        document.getElementById('editNoteText').value = result['message']['imeis'][i]['note'];
+                    }
+                }
+            }
+            
+            
+            function getParameters() {
+                let urlString = window.location.href;
+                let paramString = urlString.split('?')[1];
+                let queryString = new URLSearchParams(paramString);
+                let entries = queryString.entries();
+                let imei_json = Object.fromEntries(entries);
+                return imei_json['imei'];
+            }
+            
+            async function showLastOtaDate() {
+                const response = await fetch('/smart_tank/get_all_otas.php' );
+                var result = await response.json();
+                if (result['status'] == 'success') {
+                    document.getElementById('lastOtaSpan').innerHTML = result['message']['otas'][0]['ota_date'];
+                }
+            }
+            
+            
+            // On Edit Note pressed
+            document.getElementById("editNoteSubmit").onclick = async function () {
+                const response = await fetch('/smart_tank/edit_imei_note.php?imei='+ imei_for_analysis + '&note=' + document.getElementById("editNoteText").value);
+                var result = await response.json();
+                alert(JSON.stringify(result));
+            }
+            showImeiData();
+            showLastOtaDate();
+        </script> 
+        
+        <!--Charts Script-->
+        <script>
+        
+            async function showWaterHeightChart(numberOfPoints = '10') {
+                let xyPairsList = [];
+                if (numberOfPoints == '-1') var response = await fetch('/smart_tank/get_tank_states.php?imei='+ imei_for_analysis);
+                else var response = await fetch('/smart_tank/get_tank_states.php?imei='+ imei_for_analysis + '&list_length=' + numberOfPoints);
+                var result = await response.json();
+                for (var i=0; i < result['message']['size']; i++) {
+                    xyPairsList[i] = { x: new Date(result['message']['states'][i]['created_at']), y: parseFloat(result['message']['states'][i]['water_height_level']) };
+                }
+                var chart = new CanvasJS.Chart("waterHeightChartDiv",
+                    {
+                      title:{
+                        text: "Water Height Chart"
+                    },
+                    axisX:{
+                        title: "timeline",
+                        gridThickness: 2
+                    },
+                    axisY: {
+                        title: "Water Height"
+                    },
+                    data: [
+                    {        
+                        type: "area",
+                        dataPoints: xyPairsList
+                    }
+                    ]
+                });
+                
+                chart.render();
+            }
+            
+            async function showBatteryVoltChart(numberOfPoints = '10') {
+                let xyPairsList = [];
+                if (numberOfPoints == '-1') var response = await fetch('/smart_tank/get_tank_states.php?imei='+ imei_for_analysis);
+                else var response = await fetch('/smart_tank/get_tank_states.php?imei='+ imei_for_analysis + '&list_length=' + numberOfPoints);
+                var result = await response.json();
+                for (var i=0; i < result['message']['size']; i++) {
+                    xyPairsList[i] = { x: new Date(result['message']['states'][i]['created_at']), y: parseFloat(result['message']['states'][i]['bat_volt']) };
+                }
+                var chart = new CanvasJS.Chart("batteryVoltChartDiv",
+                    {
+                      title:{
+                        text: "Battery Volt Chart"
+                    },
+                    axisX:{
+                        title: "timeline",
+                        gridThickness: 2
+                    },
+                    axisY: {
+                        title: "battery volt"
+                    },
+                    data: [
+                    {        
+                        type: "area",
+                        dataPoints: xyPairsList
+                    }
+                    ]
+                });
+                
+                chart.render();
+            }
+            
+            async function showSignalStrengthChart(numberOfPoints = '10') {
+                let xyPairsList = [];
+                if (numberOfPoints == '-1') var response = await fetch('/smart_tank/get_tank_states.php?imei='+ imei_for_analysis);
+                else var response = await fetch('/smart_tank/get_tank_states.php?imei='+ imei_for_analysis + '&list_length=' + numberOfPoints);
+                var result = await response.json();
+                for (var i=0; i < result['message']['size']; i++) {
+                    xyPairsList[i] = { x: new Date(result['message']['states'][i]['created_at']), y: parseFloat(result['message']['states'][i]['signal_strength']) };
+                }
+                var chart = new CanvasJS.Chart("signalStrengthChartDiv",
+                    {
+                      title:{
+                        text: "Signal Strength Chart"
+                    },
+                    axisX:{
+                        title: "timeline",
+                        gridThickness: 2
+                    },
+                    axisY: {
+                        title: "Segnal Strength"
+                    },
+                    data: [
+                    {        
+                        type: "area",
+                        dataPoints: xyPairsList
+                    }
+                    ]
+                });
+                
+                chart.render();
+            }
+            
+            async function showConnectTimeChart(numberOfPoints = '10') {
+                let xyPairsList = [];
+                if (numberOfPoints == '-1') var response = await fetch('/smart_tank/get_tank_states.php?imei='+ imei_for_analysis);
+                else var response = await fetch('/smart_tank/get_tank_states.php?imei='+ imei_for_analysis + '&list_length=' + numberOfPoints);
+                var result = await response.json();
+                for (var i=0; i < result['message']['size']; i++) {
+                    xyPairsList[i] = { x: new Date(result['message']['states'][i]['created_at']), y: parseFloat(result['message']['states'][i]['connect_time']) };
+                }
+                var chart = new CanvasJS.Chart("connectTimeChartDiv",
+                    {
+                      title:{
+                        text: "Connecting Time Chart"
+                    },
+                    axisX:{
+                        title: "timeline",
+                        gridThickness: 2
+                    },
+                    axisY: {
+                        title: "Connect Time"
+                    },
+                    data: [
+                    {        
+                        type: "area",
+                        dataPoints: xyPairsList
+                    }
+                    ]
+                });
+                
+                chart.render();
+            }
+            
+            async function showConnectFailuresChart(numberOfPoints = '10') {
+                let xyPairsList = [];
+                if (numberOfPoints == '-1') var response = await fetch('/smart_tank/get_tank_states.php?imei='+ imei_for_analysis);
+                else var response = await fetch('/smart_tank/get_tank_states.php?imei='+ imei_for_analysis + '&list_length=' + numberOfPoints);
+                var result = await response.json();
+                for (var i=0; i < result['message']['size']; i++) {
+                    xyPairsList[i] = { x: new Date(result['message']['states'][i]['created_at']), y: parseFloat(result['message']['states'][i]['connect_failures']) };
+                }
+                var chart = new CanvasJS.Chart("connectFailuresChartDiv",
+                    {
+                      title:{
+                        text: "Connect Failures Chart"
+                    },
+                    axisX:{
+                        title: "timeline",
+                        gridThickness: 2
+                    },
+                    axisY: {
+                        title: "Connect Failures"
+                    },
+                    data: [
+                    {        
+                        type: "area",
+                        dataPoints: xyPairsList
+                    }
+                    ]
+                });
+                
+                chart.render();
+            }
+            
+            async function showSleepTimeChart(numberOfPoints = '10') {
+                let xyPairsList = [];
+                if (numberOfPoints == '-1') var response = await fetch('/smart_tank/get_tank_states.php?imei='+ imei_for_analysis);
+                else var response = await fetch('/smart_tank/get_tank_states.php?imei='+ imei_for_analysis + '&list_length=' + numberOfPoints);
+                var result = await response.json();
+                for (var i=0; i < result['message']['size']; i++) {
+                    xyPairsList[i] = { x: new Date(result['message']['states'][i]['created_at']), y: parseFloat(result['message']['states'][i]['sleep_time']) };
+                }
+                var chart = new CanvasJS.Chart("sleepTimeChartDiv",
+                    {
+                      title:{
+                        text: "Sleep Time Chart"
+                    },
+                    axisX:{
+                        title: "timeline",
+                        gridThickness: 2
+                    },
+                    axisY: {
+                        title: "Sleep Time"
+                    },
+                    data: [
+                    {        
+                        type: "area",
+                        dataPoints: xyPairsList
+                    }
+                    ]
+                });
+                
+                chart.render();
+            }
+            
+            async function showRawHeightChart(numberOfPoints = '10') {
+                let xyPairsList = [];
+                if (numberOfPoints == '-1') var response = await fetch('/smart_tank/get_tank_states.php?imei='+ imei_for_analysis);
+                else var response = await fetch('/smart_tank/get_tank_states.php?imei='+ imei_for_analysis + '&list_length=' + numberOfPoints);
+                var result = await response.json();
+                for (var i=0; i < result['message']['size']; i++) {
+                    xyPairsList[i] = { x: new Date(result['message']['states'][i]['created_at']), y: parseFloat(result['message']['states'][i]['raw_height']) };
+                }
+                var chart = new CanvasJS.Chart("rawHeightChartDiv",
+                    {
+                      title:{
+                        text: "Raw Height Chart"
+                    },
+                    axisX:{
+                        title: "timeline",
+                        gridThickness: 2
+                    },
+                    axisY: {
+                        title: "Raw Height"
+                    },
+                    data: [
+                    {        
+                        type: "area",
+                        dataPoints: xyPairsList
+                    }
+                    ]
+                });
+                
+                chart.render();
+            }
+            
+            showWaterHeightChart();
+            showBatteryVoltChart();
+            showSignalStrengthChart();
+            showConnectTimeChart();
+            showConnectFailuresChart();
+            showSleepTimeChart();
+            showRawHeightChart();
+            
+            // water height chart number of points
+            document.getElementById("waterHeightListLengthSelect").onchange = async function () {
+                showWaterHeightChart(document.getElementById("waterHeightListLengthSelect").value);
+            }
+            
+            // battery volt chart number of points
+            document.getElementById("batteryVoltListLengthSelect").onchange = async function () {
+                showBatteryVoltChart(document.getElementById("batteryVoltListLengthSelect").value);
+            }
+            
+            // signal strength chart number of points
+            document.getElementById("signalStrengthListLengthSelect").onchange = async function () {
+                showSignalStrengthChart(document.getElementById("signalStrengthListLengthSelect").value);
+            }
+            
+            // connection time chart number of points
+            document.getElementById("connectTimeListLengthSelect").onchange = async function () {
+                showConnectTimeChart(document.getElementById("connectTimeListLengthSelect").value);
+            }
+            
+            // connection failures chart number of points
+            document.getElementById("connectFailuresListLengthSelect").onchange = async function () {
+                showConnectFailuresChart(document.getElementById("connectFailuresListLengthSelect").value);
+            }
+            
+            // sleep time chart number of points
+            document.getElementById("sleepTimeListLengthSelect").onchange = async function () {
+                showsleepTimeChart(document.getElementById("sleepTimeListLengthSelect").value);
+            }
+            
+            // raw height chart number of points
+            document.getElementById("rawHeightListLengthSelect").onchange = async function () {
+                showrawHeightChart(document.getElementById("rawHeightListLengthSelect").value);
+            }
+        </script> 
+        
+        <!--Show Tank Configuration Script-->
+        <script>
+            
+            async function showLastTankConfigurations() {
+                const response = await fetch('/smart_tank/get_tank_configurations.php?imei='+ imei_for_analysis);
+                var result = await response.json();
+                var table = document.getElementById("existedImeisTable");
+                // console.log(result['message']['tanks'][ 0 ]);
+                document.getElementById("deviceNumberSpan").innerHTML = result['message']['tanks'][0]['device_number'];
+                document.getElementById("receiverNumberSpan").innerHTML = result['message']['tanks'][0]['receiver_number'];
+                document.getElementById("tankHeightSpan").innerHTML = result['message']['tanks'][0]['tank_height'];
+                document.getElementById("tankHeightSpan1").innerHTML = result['message']['tanks'][0]['tank_height'];
+                document.getElementById("deadHeightSpan").innerHTML = result['message']['tanks'][0]['dead_height'];
+                document.getElementById("iccidSpan").innerHTML = result['message']['tanks'][0]['iccid'];
+                document.getElementById("createdAtSpan").innerHTML = result['message']['tanks'][0]['created_at'];
+            }
+            
+            async function showTankConfigurationsTable() {
+                const response = await fetch('/smart_tank/get_tank_configurations.php?imei='+ imei_for_analysis);
+                var result = await response.json();
+                for (var i=0; i < result['message']['size']; i++) {
+                    // console.log(result['message']['tanks'][i]);
+                    addRowToTankConfigurationsTable(
+                        result['message']['tanks'][i]['device_number'], 
+                        result['message']['tanks'][i]['receiver_number'], 
+                        result['message']['tanks'][i]['tank_height'], 
+                        result['message']['tanks'][i]['dead_height'], 
+                        result['message']['tanks'][i]['iccid'], 
+                        result['message']['tanks'][i]['created_at']
+                    );
+                }
+            }
+            
+            
+            
+            function addRowToTankConfigurationsTable(deviceNumber, receiverNumber, tankHeight, deadHeight, iccid, createdAt) {
+                var table = document.getElementById("tankConfigurationsTable");
+                var row = table.insertRow();
+                var deviceNumberCell = row.insertCell(0);
+                var receiverNumberCell = row.insertCell(1);
+                var tankHeightCell = row.insertCell(2);
+                var deadHeightCell = row.insertCell(3);
+                var iccidCell = row.insertCell(4);
+                var createdAtCell = row.insertCell(5);
+                deviceNumberCell.innerHTML = deviceNumber;
+                receiverNumberCell.innerHTML = receiverNumber;
+                tankHeightCell.innerHTML = tankHeight;
+                deadHeightCell.innerHTML = deadHeight;
+                iccidCell.innerHTML = iccid;
+                createdAtCell.innerHTML = createdAt;
+            }
+            
+            showTankConfigurationsTable();
+            showLastTankConfigurations();
+            
+        </script>
+        
+        <!--Show Tank States Script-->
+        <script>
+            // tank state table number of points
+            document.getElementById("tankStateListLengthSelect").onchange = async function () {
+                deleteTankStateTableRows();
+                showTankStatesTable(document.getElementById("tankStateListLengthSelect").value);
+            }
+            
+            async function showTankStatesTable(numberOfPoints = '10') {
+                if (numberOfPoints == '-1') var response = await fetch('/smart_tank/get_tank_states.php?imei='+ imei_for_analysis);
+                else var response = await fetch('/smart_tank/get_tank_states.php?imei='+ imei_for_analysis + '&list_length=' + numberOfPoints);
+                var result = await response.json();
+                for (var i=0; i < result['message']['size']; i++) {
+                    // console.log(result['message']['tanks'][i]);
+                    addRowToTankStatesTable(
+                        result['message']['size'] - i,
+                        result['message']['states'][i]['water_height_level'], 
+                        result['message']['states'][i]['connect_time'], 
+                        result['message']['states'][i]['signal_strength'], 
+                        result['message']['states'][i]['connect_failures'], 
+                        result['message']['states'][i]['bat_volt'],
+                        result['message']['states'][i]['ota_date'],
+                        result['message']['states'][i]['created_at'],
+                        result['message']['states'][i]['comment'],
+                        result['message']['states'][i]['sleep_time'],
+                        result['message']['states'][i]['raw_height'],
+                    );
+                }
+            }
+            
+            function addRowToTankStatesTable(number, waterHeightLever, connectTime, signalStrength, connectFailures, battartVolt, otaDate, createdAt, comment, sleepTime, rawHeight) {
+                var table = document.getElementById("tankStatesTable");
+                var row = table.insertRow();
+                var numberCell = row.insertCell(0);
+                var waterHeightLeverCell = row.insertCell(1);
+                var rawHeightCell = row.insertCell(2);
+                var connectTimeCell = row.insertCell(3);
+                var signalStrengthCell = row.insertCell(4);
+                var connectFailuresCell = row.insertCell(5);
+                var battartVoltCell = row.insertCell(6);
+                var sleepTimeCell = row.insertCell(7);
+                var otaDateCell = row.insertCell(8);
+                var createdAtCell = row.insertCell(9);
+                var commentCell = row.insertCell(10);
+                numberCell.innerHTML = number;
+                waterHeightLeverCell.innerHTML = waterHeightLever;
+                rawHeightCell.innerHTML = rawHeight;
+                connectTimeCell.innerHTML = connectTime;
+                signalStrengthCell.innerHTML = signalStrength;
+                connectFailuresCell.innerHTML = connectFailures;
+                battartVoltCell.innerHTML = battartVolt;
+                sleepTimeCell.innerHTML = sleepTime;
+                otaDateCell.innerHTML = otaDate;
+                createdAtCell.innerHTML = createdAt;
+                commentCell.innerHTML = comment;
+            }
+            
+            function deleteTankStateTableRows() {
+                var table = document.getElementById("tankStatesTable");
+                var rowCount = table.rows.length;
+                for (var i = rowCount - 1; i > 0; i--) {
+                    table.deleteRow(i);
+                }
+            }
+            
+            showTankStatesTable();
+            
+        </script>
+    
+    </body>
+</html>
