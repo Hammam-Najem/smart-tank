@@ -1,8 +1,8 @@
 <?php
 
-    $dsn = "mysql:host=localhost;dbname=technri2_smart_tank_db";
-    $user = "technri2_default_user";
-    $pass ="defaultUser123";
+    $dsn = "mysql:host=172.31.16.0;dbname=ebdb";
+    $user = "admin";
+    $pass ="technoUser123";
     $option = array(
     PDO::MYSQL_ATTR_INIT_COMMAND =>"SET NAMES UTF8"
     );
