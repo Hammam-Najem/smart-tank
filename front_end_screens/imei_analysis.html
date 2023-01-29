@@ -288,7 +288,7 @@
             document.getElementById('fetchedImeiSpan').innerHTML = imei_for_analysis;
             
             async function showImeiData() {
-                const response = await fetch('/smart_tank/search_imei.php?sub_string='+ imei_for_analysis );
+                const response = await fetch('../search_imei.php?sub_string='+ imei_for_analysis );
                 var result = await response.json();
                 if (result['status'] == 'success') {
                     for (var i=0; i < result['message']['size']; i++) {
@@ -310,7 +310,7 @@
             }
             
             async function showLastOtaDate() {
-                const response = await fetch('/smart_tank/get_all_otas.php' );
+                const response = await fetch('../get_all_otas.php' );
                 var result = await response.json();
                 if (result['status'] == 'success') {
                     document.getElementById('lastOtaSpan').innerHTML = result['message']['otas'][0]['ota_date'];
@@ -320,7 +320,7 @@
             
             // On Edit Note pressed
             document.getElementById("editNoteSubmit").onclick = async function () {
-                const response = await fetch('/smart_tank/edit_imei_note.php?imei='+ imei_for_analysis + '&note=' + document.getElementById("editNoteText").value);
+                const response = await fetch('../edit_imei_note.php?imei='+ imei_for_analysis + '&note=' + document.getElementById("editNoteText").value);
                 var result = await response.json();
                 alert(JSON.stringify(result));
             }
@@ -333,8 +333,8 @@
         
             async function showWaterHeightChart(numberOfPoints = '10') {
                 let xyPairsList = [];
-                if (numberOfPoints == '-1') var response = await fetch('/smart_tank/get_tank_states.php?imei='+ imei_for_analysis);
-                else var response = await fetch('/smart_tank/get_tank_states.php?imei='+ imei_for_analysis + '&list_length=' + numberOfPoints);
+                if (numberOfPoints == '-1') var response = await fetch('../get_tank_states.php?imei='+ imei_for_analysis);
+                else var response = await fetch('../get_tank_states.php?imei='+ imei_for_analysis + '&list_length=' + numberOfPoints);
                 var result = await response.json();
                 for (var i=0; i < result['message']['size']; i++) {
                     xyPairsList[i] = { x: new Date(result['message']['states'][i]['created_at']), y: parseFloat(result['message']['states'][i]['water_height_level']) };
@@ -364,8 +364,8 @@
             
             async function showBatteryVoltChart(numberOfPoints = '10') {
                 let xyPairsList = [];
-                if (numberOfPoints == '-1') var response = await fetch('/smart_tank/get_tank_states.php?imei='+ imei_for_analysis);
-                else var response = await fetch('/smart_tank/get_tank_states.php?imei='+ imei_for_analysis + '&list_length=' + numberOfPoints);
+                if (numberOfPoints == '-1') var response = await fetch('../get_tank_states.php?imei='+ imei_for_analysis);
+                else var response = await fetch('../get_tank_states.php?imei='+ imei_for_analysis + '&list_length=' + numberOfPoints);
                 var result = await response.json();
                 for (var i=0; i < result['message']['size']; i++) {
                     xyPairsList[i] = { x: new Date(result['message']['states'][i]['created_at']), y: parseFloat(result['message']['states'][i]['bat_volt']) };
@@ -395,8 +395,8 @@
             
             async function showSignalStrengthChart(numberOfPoints = '10') {
                 let xyPairsList = [];
-                if (numberOfPoints == '-1') var response = await fetch('/smart_tank/get_tank_states.php?imei='+ imei_for_analysis);
-                else var response = await fetch('/smart_tank/get_tank_states.php?imei='+ imei_for_analysis + '&list_length=' + numberOfPoints);
+                if (numberOfPoints == '-1') var response = await fetch('../get_tank_states.php?imei='+ imei_for_analysis);
+                else var response = await fetch('../get_tank_states.php?imei='+ imei_for_analysis + '&list_length=' + numberOfPoints);
                 var result = await response.json();
                 for (var i=0; i < result['message']['size']; i++) {
                     xyPairsList[i] = { x: new Date(result['message']['states'][i]['created_at']), y: parseFloat(result['message']['states'][i]['signal_strength']) };
@@ -426,8 +426,8 @@
             
             async function showConnectTimeChart(numberOfPoints = '10') {
                 let xyPairsList = [];
-                if (numberOfPoints == '-1') var response = await fetch('/smart_tank/get_tank_states.php?imei='+ imei_for_analysis);
-                else var response = await fetch('/smart_tank/get_tank_states.php?imei='+ imei_for_analysis + '&list_length=' + numberOfPoints);
+                if (numberOfPoints == '-1') var response = await fetch('../get_tank_states.php?imei='+ imei_for_analysis);
+                else var response = await fetch('../get_tank_states.php?imei='+ imei_for_analysis + '&list_length=' + numberOfPoints);
                 var result = await response.json();
                 for (var i=0; i < result['message']['size']; i++) {
                     xyPairsList[i] = { x: new Date(result['message']['states'][i]['created_at']), y: parseFloat(result['message']['states'][i]['connect_time']) };
@@ -457,8 +457,8 @@
             
             async function showConnectFailuresChart(numberOfPoints = '10') {
                 let xyPairsList = [];
-                if (numberOfPoints == '-1') var response = await fetch('/smart_tank/get_tank_states.php?imei='+ imei_for_analysis);
-                else var response = await fetch('/smart_tank/get_tank_states.php?imei='+ imei_for_analysis + '&list_length=' + numberOfPoints);
+                if (numberOfPoints == '-1') var response = await fetch('../get_tank_states.php?imei='+ imei_for_analysis);
+                else var response = await fetch('../get_tank_states.php?imei='+ imei_for_analysis + '&list_length=' + numberOfPoints);
                 var result = await response.json();
                 for (var i=0; i < result['message']['size']; i++) {
                     xyPairsList[i] = { x: new Date(result['message']['states'][i]['created_at']), y: parseFloat(result['message']['states'][i]['connect_failures']) };
@@ -488,8 +488,8 @@
             
             async function showSleepTimeChart(numberOfPoints = '10') {
                 let xyPairsList = [];
-                if (numberOfPoints == '-1') var response = await fetch('/smart_tank/get_tank_states.php?imei='+ imei_for_analysis);
-                else var response = await fetch('/smart_tank/get_tank_states.php?imei='+ imei_for_analysis + '&list_length=' + numberOfPoints);
+                if (numberOfPoints == '-1') var response = await fetch('../get_tank_states.php?imei='+ imei_for_analysis);
+                else var response = await fetch('../get_tank_states.php?imei='+ imei_for_analysis + '&list_length=' + numberOfPoints);
                 var result = await response.json();
                 for (var i=0; i < result['message']['size']; i++) {
                     xyPairsList[i] = { x: new Date(result['message']['states'][i]['created_at']), y: parseFloat(result['message']['states'][i]['sleep_time']) };
@@ -519,8 +519,8 @@
             
             async function showRawHeightChart(numberOfPoints = '10') {
                 let xyPairsList = [];
-                if (numberOfPoints == '-1') var response = await fetch('/smart_tank/get_tank_states.php?imei='+ imei_for_analysis);
-                else var response = await fetch('/smart_tank/get_tank_states.php?imei='+ imei_for_analysis + '&list_length=' + numberOfPoints);
+                if (numberOfPoints == '-1') var response = await fetch('../get_tank_states.php?imei='+ imei_for_analysis);
+                else var response = await fetch('../get_tank_states.php?imei='+ imei_for_analysis + '&list_length=' + numberOfPoints);
                 var result = await response.json();
                 for (var i=0; i < result['message']['size']; i++) {
                     xyPairsList[i] = { x: new Date(result['message']['states'][i]['created_at']), y: parseFloat(result['message']['states'][i]['raw_height']) };
@@ -596,7 +596,7 @@
         <script>
             
             async function showLastTankConfigurations() {
-                const response = await fetch('/smart_tank/get_tank_configurations.php?imei='+ imei_for_analysis);
+                const response = await fetch('../get_tank_configurations.php?imei='+ imei_for_analysis);
                 var result = await response.json();
                 var table = document.getElementById("existedImeisTable");
                 // console.log(result['message']['tanks'][ 0 ]);
@@ -610,7 +610,7 @@
             }
             
             async function showTankConfigurationsTable() {
-                const response = await fetch('/smart_tank/get_tank_configurations.php?imei='+ imei_for_analysis);
+                const response = await fetch('../get_tank_configurations.php?imei='+ imei_for_analysis);
                 var result = await response.json();
                 for (var i=0; i < result['message']['size']; i++) {
                     // console.log(result['message']['tanks'][i]);
@@ -658,8 +658,8 @@
             }
             
             async function showTankStatesTable(numberOfPoints = '10') {
-                if (numberOfPoints == '-1') var response = await fetch('/smart_tank/get_tank_states.php?imei='+ imei_for_analysis);
-                else var response = await fetch('/smart_tank/get_tank_states.php?imei='+ imei_for_analysis + '&list_length=' + numberOfPoints);
+                if (numberOfPoints == '-1') var response = await fetch('../get_tank_states.php?imei='+ imei_for_analysis);
+                else var response = await fetch('../get_tank_states.php?imei='+ imei_for_analysis + '&list_length=' + numberOfPoints);
                 var result = await response.json();
                 for (var i=0; i < result['message']['size']; i++) {
                     // console.log(result['message']['tanks'][i]);

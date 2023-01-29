@@ -88,7 +88,7 @@
         <div class="container">
             <h2>Upload New OTA</h2>
             <h4>You can upload new OTA.bin from your labtop and provide the OTA date</h4>
-            <form action="/smart_tank/ota_file_upload.php" method="post" onsubmit="document.getElementById('uploadingDiv').style.display = 'block';" enctype="multipart/form-data">
+            <form action="../ota_file_upload.php" method="post" onsubmit="document.getElementById('uploadingDiv').style.display = 'block';" enctype="multipart/form-data">
                 <label for="otaDayTime">OTA date and time: </label>
                 <input type="datetime-local" id="otaDayTime" name="otaDayTime" required >
                 <h4></h4>
@@ -129,7 +129,7 @@
             document.getElementById('userNameInput').value = urlParams.get('name');
 
             async function getAllOtas() {
-                const response = await fetch('/smart_tank/get_all_otas.php');
+                const response = await fetch('../get_all_otas.php');
                 var result = await response.json();
                 for (var i=0; i < result['message']['size']; i++) {
                     addRowToTable(
@@ -171,7 +171,7 @@
             
             async function deleteOta(createdAt) {
                 if (!confirm('Delete OTA created at ' + createdAt + ' ?')) return;
-                const response = await fetch('/smart_tank/delete_ota.php?created_at='+ createdAt);
+                const response = await fetch('../delete_ota.php?created_at='+ createdAt);
                 var result = await response.json();
                 if (result['status'] == 'success') document.getElementById('row:' + createdAt).remove();
                 else alert(JSON.stringify(result));

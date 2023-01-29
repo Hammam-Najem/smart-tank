@@ -2,7 +2,7 @@
 
     include "constants.php";
     include "connect-db.php";
-    if($_SERVER['REQUSET_METHOD']=="GET") {
+    if($_SERVER['REQUEST_METHOD']==="GET") {
         if ( isset($_GET["name"]) && isset($_GET["password"])) {
           	$name = $_GET["name"];
           	$password = $_GET["password"];

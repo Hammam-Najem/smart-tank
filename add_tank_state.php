@@ -60,9 +60,9 @@
                  	        "message" => array(
                  	            "ota_need_update" => ($ota_date != $last_ota_date) ? "true" : "false",
                  	            "new_ota_date" => $last_ota_date,
-                 	            "ota_host_url" => "technolab4iot.com",
-                 	            "ota_bin_uri" => "/smart_tank/OTAs/".$last_ota_date."/".$last_ota_name,
-             	                "ota_full_url" => "technolab4iot.com/smart_tank/OTAs/".$last_ota_date."/".$last_ota_name,
+                 	            "ota_host_url" => "smart-tank3-env.eba-rugg2xsp.us-east-1.elasticbeanstalk.com",
+                 	            "ota_bin_uri" => "/smart-tank/OTAs/".$last_ota_date."/".$last_ota_name,
+             	                "ota_full_url" => "smart-tank3-env.eba-rugg2xsp.us-east-1.elasticbeanstalk.com/smart-tank/OTAs/".$last_ota_date."/".$last_ota_name,
              	            ) 
          	            ));    
                     } else {

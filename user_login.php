@@ -16,7 +16,7 @@
          	        'status'=>"success", 
          	        "message" => array(
          	            "id" => $client['id'],
-         	            "user_name" => $client['user_name'],
+         	            "user_name" => $client['name'],
          	            "password" => $client['password'],
      	            ) 
  	            ));

@@ -92,12 +92,12 @@
         <script type = "text/javascript">
             
             document.getElementById("userLogin").onclick = async function () {
-                const response = await fetch('/smart_tank/user_login.php' +
+                const response = await fetch('../user_login.php' +
                     '?user_name='+ document.getElementById("user_name").value +
                     '&password='+ document.getElementById("password").value
                 );
                 var result = await response.json();
-                if (result['status'] == 'success') window.location.href = "/smart_tank/front_end_screens/main_page.html?name=" + document.getElementById("user_name").value;
+                if (result['status'] == 'success') window.location.href = "../front_end_screens/main_page.html?name=" + document.getElementById("user_name").value;
                 else alert(JSON.stringify(result));
             }
         </script>

@@ -151,7 +151,7 @@
                     alert(JSON.stringify("IMEI can be contains only numbers!!"));
                     return;
                 }
-                const response = await fetch('/smart_tank/add_new_imei.php?imei='+ document.getElementById("fetchedImei").innerHTML + '&note=' + document.getElementById("addNoteText").value);
+                const response = await fetch('../add_new_imei.php?imei='+ document.getElementById("fetchedImei").innerHTML + '&note=' + document.getElementById("addNoteText").value);
                 var result = await response.json();
                 if(result['status'] == 'success') {
                     addRowToTable( 
@@ -172,7 +172,7 @@
             // On seatch IMEI pressed
             document.getElementById("imeiSeachSubmit").onclick = async function () {
                 if (document.getElementById("imeiSearchText").value.length != 0){
-                    const response = await fetch('/smart_tank/search_imei.php?sub_string='+ document.getElementById("imeiSearchText").value);
+                    const response = await fetch('../search_imei.php?sub_string='+ document.getElementById("imeiSearchText").value);
                     var result = await response.json();
                     if (result['status'] == 'success') {
                         document.getElementById("imeiSearchText").value = '';
@@ -196,7 +196,7 @@
             }
             
             async function getAllImeis() {
-                const response = await fetch('/smart_tank/get_all_imeis.php');
+                const response = await fetch('../get_all_imeis.php');
                 var result = await response.json();
                 for (var i=0; i < result['message']['size']; i++) {
                     addRowToTable(
@@ -211,16 +211,16 @@
             
             async function deleteImei(imei) {
                 if (!confirm('Delete ' + imei + ' ?')) return;
-                const response = await fetch('/smart_tank/delete_imei.php?imei='+ imei);
+                const response = await fetch('../delete_imei.php?imei='+ imei);
                 var result = await response.json();
                 if (result['status'] == 'success') document.getElementById('row:' + imei).remove();
                 else alert(JSON.stringify(result));
             }
             
             async function analysisImei(imei) {
-                // window.location.href = "/smart_tank/front_end_screens/imei_analysis.html?imei=" + imei;
+                // window.location.href = "../front_end_screens/imei_analysis.html?imei=" + imei;
                 window.open(
-                    "/smart_tank/front_end_screens/imei_analysis.html?imei=" + imei,
+                    "../front_end_screens/imei_analysis.html?imei=" + imei,
                     '_blank' // open in a new window.
                 );
             }

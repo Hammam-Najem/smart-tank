@@ -130,13 +130,13 @@
         <!--Show Tank Script-->
         <script>
             document.getElementById("emptyTankRequetsButton").onclick = async function () {
-                const response = await fetch('/smart_tank/empty_br_tanks.php' );
+                const response = await fetch('../empty_br_tanks.php' );
                 deleteTankTableRows();
                 showTanksTable();
             }
             
             async function showTanksTable() {
-                response = await fetch('/smart_tank/get_br_tanks.php');
+                response = await fetch('../get_br_tanks.php');
                 var result = await response.json();
                 for (var i=0; i < result['message']['size']; i++) {
                     // console.log(result['message']['tanks'][i]);
@@ -189,13 +189,13 @@
         <!--Show Tank States Script-->
         <script>
             document.getElementById("emptyTankStateRequetsButton").onclick = async function () {
-                const response = await fetch('/smart_tank/empty_br_tank_states.php' );
+                const response = await fetch('../empty_br_tank_states.php' );
                 deleteTankStateTableRows();
                 showTankStatesTable();
             }
             
             async function showTankStatesTable() {
-                response = await fetch('/smart_tank/get_br_tank_states.php');
+                response = await fetch('../get_br_tank_states.php');
                 var result = await response.json();
                 for (var i=0; i < result['message']['size']; i++) {
                     addRowToTankStatesTable(
