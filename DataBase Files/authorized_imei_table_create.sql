@@ -1,4 +1,4 @@
-CREATE TABLE `technri2_smart_tank_db`.`authorized_emie` (
+CREATE TABLE `authorized_emie` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `imei` VARCHAR(15) NOT NULL,
   `note` VARCHAR(200) NOT NULL DEFAULT "",

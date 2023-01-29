@@ -1,4 +1,4 @@
-CREATE TABLE `technri2_smart_tank_db`.`tank_state` (
+CREATE TABLE `tank_state` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `water_height_level` DOUBLE NOT NULL,
   `raw_height` DOUBLE NOT NULL,

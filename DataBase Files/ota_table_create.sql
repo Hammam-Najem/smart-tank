@@ -1,4 +1,4 @@
-CREATE TABLE `technri2_smart_tank_db`.`ota` (
+CREATE TABLE `ota` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `ota_date` VARCHAR(20) NOT NULL,
   `ota_format` VARCHAR(20) NOT NULL,
