@@ -1,6 +1,6 @@
 <?php
 
-    $dsn = "mysql:host=172.31.16.0;dbname=ebdb";
+    $dsn = "mysql:host=awseb-e-dirfi4m6r5-stack-awsebrdsdatabase-szitjzpryd8l.chtu2gwpamju.us-east-1.rds.amazonaws.com;dbname=ebdb";
     $user = "admin";
     $pass ="technoUser123";
     $option = array(
