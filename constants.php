@@ -1,5 +1,5 @@
 <?php
-    $local_server_timestamb = date("Y-m-d H:i:s");
+    $local_server_timestamb = date("Y-m-d H:i:s", strtotime('+2 hours'));
     
     
     function incementTankStateRequestsNumber($con, $imei) {
