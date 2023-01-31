@@ -1,7 +1,7 @@
 <?php
     $local_server_timestamb = date("Y-m-d H:i:s", strtotime('+2 hours'));
     
-    
+    // this is coment
     function incementTankStateRequestsNumber($con, $imei) {
         try {
             $stmt=$con->prepare("UPDATE authorized_emie SET tank_state_requests_number = tank_state_requests_number + 1 WHERE imei = ?;");
