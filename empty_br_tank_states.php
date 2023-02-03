@@ -2,10 +2,10 @@
 
     include "constants.php";
     include "connect-db.php";
-    if($_SERVER['REQUSET_METHOD']="GET") {
+    if($_SERVER['REQUEST_METHOD']==="GET") {
         try {
       	    $stmt=$con->prepare("DELETE FROM br_tank_state");
-            $stmt->execute(array($imei));   
+            $stmt->execute(array());   
             echo json_encode( array(
      	        'status'=>"success", 
      	        "message" => "Deleted !!",
